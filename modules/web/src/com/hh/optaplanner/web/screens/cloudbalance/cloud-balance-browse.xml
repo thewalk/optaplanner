@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://browseCaption"
+        focusComponent="cloudBalancesTable"
+        messagesPack="com.hh.optaplanner.web.screens.cloudbalance">
+    <data readOnly="true">
+        <collection id="cloudBalancesDc"
+                    class="com.hh.optaplanner.entity.CloudBalance"
+                    view="_local">
+            <loader id="cloudBalancesDl">
+                <query>
+                    <![CDATA[select e from optaplanner_CloudBalance e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="cloudBalancesTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="cloudBalancesTable"
+                dataLoader="cloudBalancesDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="cloudBalancesTable"
+                    width="100%"
+                    dataContainer="cloudBalancesDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+                <action id="resolve"/>
+            </actions>
+            <columns>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="cloudBalancesTable.create"/>
+                <button id="editBtn" action="cloudBalancesTable.edit"/>
+                <button id="removeBtn" action="cloudBalancesTable.remove"/>
+                <button id="resolveBtn" action="cloudBalancesTable.resolve" caption="resolve"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

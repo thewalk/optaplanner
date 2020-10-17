@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://editorCaption"
+        focusComponent="form"
+        messagesPack="com.hh.optaplanner.web.screens.process">
+    <data>
+        <instance id="processDc"
+                  class="com.hh.optaplanner.entity.Process"
+                  view="process-with-cloud-balance-view">
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="processDc">
+            <column width="250px">
+                <textField id="nameField" property="name"/>
+                <textField id="requiredCpuPowerField" property="requiredCpuPower"/>
+                <textField id="requiredMemoryField" property="requiredMemory"/>
+                <textField id="requiredNetworkBandwidthField" property="requiredNetworkBandwidth"/>
+                <pickerField id="cloudBalanceField" property="cloudBalance">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+                <pickerField id="computerField" property="computer">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

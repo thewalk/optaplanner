@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://editorCaption"
+        focusComponent="form"
+        messagesPack="com.hh.optaplanner.web.screens.computer">
+    <data>
+        <instance id="computerDc"
+                  class="com.hh.optaplanner.entity.Computer"
+                  view="computer-with-cloud-balance-view">
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="computerDc">
+            <column width="250px">
+                <textField id="nameField" property="name"/>
+                <textField id="cpuPowerField" property="cpuPower"/>
+                <textField id="memoryField" property="memory"/>
+                <textField id="networkBandwidthField" property="networkBandwidth"/>
+                <textField id="costField" property="cost"/>
+                <pickerField id="cloudBalanceField" property="cloudBalance">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button action="windowCommitAndClose"/>
+            <button action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

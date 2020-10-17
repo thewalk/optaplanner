@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<views xmlns="http://schemas.haulmont.com/cuba/view.xsd">
+
+    <view entity="optaplanner_Process" name="process-with-cloud-balance-view" extends="_local">
+        <property name="cloudBalance"/>
+        <property name="computer"/>
+    </view>
+    <view entity="optaplanner_Computer" name="computer-with-cloud-balance-view" extends="_local">
+        <property name="cloudBalance"/>
+    </view>
+    <view entity="optaplanner_CloudBalance" name="cloudBalance-with-computer-with-process-view" extends="_local">
+        <property name="computerList" view="_local"/>
+        <property name="processList" view="_local">
+            <property name="computer"/>
+        </property>
+    </view>
+</views>
